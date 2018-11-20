@@ -12,7 +12,7 @@ import SwiftyJSON
 
 struct Service {
     
-    let tron = TRON(baseURL: "https://api.letsbuildthatapp.com")
+    let tron = TRON(baseURL: Constants.apiBaseAddress)
     
     static let shared = Service()
     

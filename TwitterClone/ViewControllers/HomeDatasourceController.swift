@@ -41,6 +41,14 @@ class HomeDatasourceController: DatasourceController{
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(didTapToImageView(notification:)), name: Constants.imageZoomNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: Constants.imageZoomNotification, object: nil)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1{
             let cell = collectionView.cellForItem(at: indexPath) as? TweetCell
@@ -50,7 +58,8 @@ class HomeDatasourceController: DatasourceController{
     }
     
     private func estimateRowHeight(at indexPath:IndexPath) -> CGSize{
-        let size = CGSize(width: view.frame.width - 88, height: .infinity)
+        let contentWidth = view.frame.width - 88
+        let size = CGSize(width: contentWidth, height: .infinity)
         let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 15)]
         
         if let user = datasource?.item(indexPath) as? User {
@@ -59,10 +68,12 @@ class HomeDatasourceController: DatasourceController{
             
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 66)
         }else if let tweet = datasource?.item(indexPath) as? Tweet{
-            
             let estimatedFrame = NSString(string: tweet.message).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 220)
+            //12 + 20 + estimatedFrame.height + 8 + tweet.image.height + 8 + 20 + 8
+            var imageHeight = (CGFloat(tweet.image.height) / CGFloat(tweet.image.width)) * CGFloat(contentWidth)
+            if imageHeight.isNaN { imageHeight = 0 }
+            let height = estimatedFrame.height + imageHeight + CGFloat(76)
+            return CGSize(width: view.frame.width, height: height)
         }else{
             return .zero
         }

@@ -10,6 +10,11 @@ import UIKit
 
 extension HomeDatasourceController{
     
+    @objc func didTapToImageView(notification:Notification) {
+        guard let imageView = notification.object as? UIImageView else{ return }
+        performZoomInForImageView(imageToZoomIn: imageView)
+    }
+    
     func performZoomInForImageView(imageToZoomIn:UIImageView){
         
         startingImageView = imageToZoomIn
@@ -24,11 +29,12 @@ extension HomeDatasourceController{
         keyWindow.addSubview(blackBackgroundView!)
         
         let zoomingImageView = UIImageView(frame: startingFrame!)
-        zoomingImageView.backgroundColor = UIColor.red
+        zoomingImageView.backgroundColor = UIColor.black
         zoomingImageView.image = imageToZoomIn.image
         zoomingImageView.layer.cornerRadius = 16
         zoomingImageView.clipsToBounds = true
         zoomingImageView.isUserInteractionEnabled = true
+        zoomingImageView.contentMode = .scaleAspectFill
         zoomingImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(performZoomOutFromImage(tapGesture:))))
         
         keyWindow.addSubview(zoomingImageView)
@@ -49,7 +55,7 @@ extension HomeDatasourceController{
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             zoomingImageView.frame = self.startingFrame!
             
-            zoomingImageView.layer.cornerRadius = 16
+            zoomingImageView.layer.cornerRadius = 8
             self.blackBackgroundView?.alpha = 0
         }, completion: { (completed) in
             zoomingImageView.removeFromSuperview()

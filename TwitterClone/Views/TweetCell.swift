@@ -33,7 +33,7 @@ class TweetCell: DatasourceCell {
         let imageView = CachedImageView()
         imageView.image = #imageLiteral(resourceName: "profile_image")
         imageView.layer.cornerRadius = 5
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -50,12 +50,14 @@ class TweetCell: DatasourceCell {
         label.font = UIFont.systemFont(ofSize: 15)
         label.backgroundColor = .clear
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.minimumScaleFactor = 0.2
         return label
     }()
     
     lazy var mediaImageView: CachedImageView = {
         let imageView = CachedImageView()
-        imageView.backgroundColor = UIColor.purple.withAlphaComponent(0.15)
+        imageView.backgroundColor = UIColor.black
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
@@ -65,7 +67,8 @@ class TweetCell: DatasourceCell {
     
     @objc func handleZoomTap(tapGesture:UITapGestureRecognizer){
         guard let imageView = tapGesture.view as? UIImageView else{ return }
-        link?.performZoomInForImageView(imageToZoomIn: imageView)
+        NotificationCenter.default.post(name: Constants.imageZoomNotification, object: imageView)
+//        link?.performZoomInForImageView(imageToZoomIn: imageView)
     }
     
     let replyButton: UIButton = {
@@ -114,13 +117,14 @@ class TweetCell: DatasourceCell {
         nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
         
         bodyLabel.anchor(nameLabel.bottomAnchor, left: nameLabel.leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 0)
-        mediaImageView.anchor(bodyLabel.bottomAnchor, left: bodyLabel.leftAnchor, bottom: nil, right: bodyLabel.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 140)
         
         let bottomButtons = UIStackView(arrangedSubviews: [replyButton, retweetButton, favButton, dmButton])
         bottomButtons.axis = .horizontal
         bottomButtons.distribution = .fillEqually
         addSubview(bottomButtons)
         
-        bottomButtons.anchor(mediaImageView.bottomAnchor, left: bodyLabel.leftAnchor, bottom: nil, right: bodyLabel.rightAnchor, topConstant: 8, leftConstant: -(replyButton.frame.width / 2), bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        bottomButtons.anchor(nil, left: bodyLabel.leftAnchor, bottom: bottomAnchor, right: bodyLabel.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        
+        mediaImageView.anchor(bodyLabel.bottomAnchor, left: bodyLabel.leftAnchor, bottom: bottomButtons.topAnchor, right: bodyLabel.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
 }

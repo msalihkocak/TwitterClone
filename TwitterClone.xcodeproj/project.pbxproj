@@ -21,6 +21,7 @@
 		9DB6FF6621A1FB7900E291E3 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF6521A1FB7900E291E3 /* HomeDatasource.swift */; };
 		9DB6FF6921A2104500E291E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF6821A2104500E291E3 /* Extensions.swift */; };
 		9DB6FF6B21A2171E00E291E3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF6A21A2171E00E291E3 /* User.swift */; };
+		9DC2903521A4845A00CDBA4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2903421A4845A00CDBA4F /* Constants.swift */; };
 		C8215D9778F8CFE38D9BF9D8 /* Pods_TwitterClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B20B95DB83473176B233BB /* Pods_TwitterClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		9DB6FF6521A1FB7900E291E3 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
 		9DB6FF6821A2104500E291E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DB6FF6A21A2171E00E291E3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9DC2903421A4845A00CDBA4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB6FF6821A2104500E291E3 /* Extensions.swift */,
+				9DC2903421A4845A00CDBA4F /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				9DAA777A21A340BC00E3E1AD /* TweetCell.swift in Sources */,
 				9D23BA3D21A1E03000888CFD /* AppDelegate.swift in Sources */,
 				9DB6FF6421A1FB2B00E291E3 /* Cells.swift in Sources */,
+				9DC2903521A4845A00CDBA4F /* Constants.swift in Sources */,
 				9D7FE49C21A4463E0069A125 /* Home+imageZoom.swift in Sources */,
 				9DB6FF6021A1F54000E291E3 /* HomeDatasourceController.swift in Sources */,
 				9D7FE49A21A415170069A125 /* Service.swift in Sources */,
