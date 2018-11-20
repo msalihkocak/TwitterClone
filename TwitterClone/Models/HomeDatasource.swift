@@ -19,8 +19,12 @@ class HomeDatasource: Datasource, JSONDecodable{
         users = [User]()
         tweets = [Tweet]()
         
-        self.users = json["users"].arrayValue.map({return User(json: $0)})
-        self.tweets = json["tweets"].arrayValue.map({return Tweet(json: $0)})
+        guard let usersArray = json["users"].array, let tweetsArray = json["tweets"].array else{
+            throw NSError(domain: "com.msalihkocak", code: 1, userInfo: [NSLocalizedDescriptionKey: "users json is not valid."])
+        }
+        
+        self.users = try usersArray.decode()
+        self.tweets = try tweetsArray.decode()
     }
     
     override func cellClasses() -> [DatasourceCell.Type] {

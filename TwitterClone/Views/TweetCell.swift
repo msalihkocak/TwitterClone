@@ -10,6 +10,8 @@ import LBTAComponents
 
 class TweetCell: DatasourceCell {
     
+    weak var link:HomeDatasourceController?
+    
     let nameAttr = [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 16)]
     let usernameAttr = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.lightGray]
     
@@ -27,7 +29,7 @@ class TweetCell: DatasourceCell {
         }
     }
     
-    let profileImageView: CachedImageView = {
+    lazy var profileImageView: CachedImageView = {
         let imageView = CachedImageView()
         imageView.image = #imageLiteral(resourceName: "profile_image")
         imageView.layer.cornerRadius = 5
@@ -51,13 +53,20 @@ class TweetCell: DatasourceCell {
         return label
     }()
     
-    let mediaImageView: CachedImageView = {
+    lazy var mediaImageView: CachedImageView = {
         let imageView = CachedImageView()
         imageView.backgroundColor = UIColor.purple.withAlphaComponent(0.15)
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleZoomTap)))
         return imageView
     }()
+    
+    @objc func handleZoomTap(tapGesture:UITapGestureRecognizer){
+        guard let imageView = tapGesture.view as? UIImageView else{ return }
+        link?.performZoomInForImageView(imageToZoomIn: imageView)
+    }
     
     let replyButton: UIButton = {
         let button = UIButton(type: .system)
