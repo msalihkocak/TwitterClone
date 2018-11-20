@@ -10,6 +10,11 @@
 		9D23BA3D21A1E03000888CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D23BA3C21A1E03000888CFD /* AppDelegate.swift */; };
 		9D23BA4421A1E03200888CFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D23BA4321A1E03200888CFD /* Assets.xcassets */; };
 		9D23BA4721A1E03200888CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D23BA4521A1E03200888CFD /* LaunchScreen.storyboard */; };
+		9D7FE49A21A415170069A125 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FE49921A415170069A125 /* Service.swift */; };
+		9DAA777621A2D91600E3E1AD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA777521A2D91600E3E1AD /* UserCell.swift */; };
+		9DAA777821A2FD6000E3E1AD /* Home+navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA777721A2FD6000E3E1AD /* Home+navbar.swift */; };
+		9DAA777A21A340BC00E3E1AD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA777921A340BB00E3E1AD /* TweetCell.swift */; };
+		9DAA777C21A341AB00E3E1AD /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA777B21A341AB00E3E1AD /* Tweet.swift */; };
 		9DB6FF6021A1F54000E291E3 /* HomeDatasourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF5F21A1F54000E291E3 /* HomeDatasourceController.swift */; };
 		9DB6FF6421A1FB2B00E291E3 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF6321A1FB2B00E291E3 /* Cells.swift */; };
 		9DB6FF6621A1FB7900E291E3 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6FF6521A1FB7900E291E3 /* HomeDatasource.swift */; };
@@ -27,6 +32,11 @@
 		9D23BA4321A1E03200888CFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D23BA4621A1E03200888CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D23BA4821A1E03200888CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D7FE49921A415170069A125 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		9DAA777521A2D91600E3E1AD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		9DAA777721A2FD6000E3E1AD /* Home+navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+navbar.swift"; sourceTree = "<group>"; };
+		9DAA777921A340BB00E3E1AD /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		9DAA777B21A341AB00E3E1AD /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		9DB6FF5F21A1F54000E291E3 /* HomeDatasourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasourceController.swift; sourceTree = "<group>"; };
 		9DB6FF6321A1FB2B00E291E3 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		9DB6FF6521A1FB7900E291E3 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
@@ -84,6 +94,7 @@
 		9D23BA3B21A1E03000888CFD /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
+				9D7FE49821A4150B0069A125 /* Service */,
 				9DB6FF6721A2103800E291E3 /* Utils */,
 				9DB6FF6221A1FB1800E291E3 /* Views */,
 				9DB6FF6121A1FB0F00E291E3 /* Models */,
@@ -97,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB6FF5F21A1F54000E291E3 /* HomeDatasourceController.swift */,
+				9DAA777721A2FD6000E3E1AD /* Home+navbar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -112,11 +124,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9D7FE49821A4150B0069A125 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9D7FE49921A415170069A125 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		9DB6FF6121A1FB0F00E291E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				9DB6FF6521A1FB7900E291E3 /* HomeDatasource.swift */,
 				9DB6FF6A21A2171E00E291E3 /* User.swift */,
+				9DAA777B21A341AB00E3E1AD /* Tweet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				9DB6FF6321A1FB2B00E291E3 /* Cells.swift */,
+				9DAA777521A2D91600E3E1AD /* UserCell.swift */,
+				9DAA777921A340BB00E3E1AD /* TweetCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,13 +259,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterClone/Pods-TwitterClone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -257,11 +286,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB6FF6621A1FB7900E291E3 /* HomeDatasource.swift in Sources */,
+				9DAA777C21A341AB00E3E1AD /* Tweet.swift in Sources */,
 				9DB6FF6921A2104500E291E3 /* Extensions.swift in Sources */,
+				9DAA777821A2FD6000E3E1AD /* Home+navbar.swift in Sources */,
+				9DAA777A21A340BC00E3E1AD /* TweetCell.swift in Sources */,
 				9D23BA3D21A1E03000888CFD /* AppDelegate.swift in Sources */,
 				9DB6FF6421A1FB2B00E291E3 /* Cells.swift in Sources */,
 				9DB6FF6021A1F54000E291E3 /* HomeDatasourceController.swift in Sources */,
+				9D7FE49A21A415170069A125 /* Service.swift in Sources */,
 				9DB6FF6B21A2171E00E291E3 /* User.swift in Sources */,
+				9DAA777621A2D91600E3E1AD /* UserCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

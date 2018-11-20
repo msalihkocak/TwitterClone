@@ -7,17 +7,24 @@
 //
 
 import LBTAComponents
+import SwiftyJSON
+import TRON
 
-class HomeDatasource: Datasource{
+class HomeDatasource: Datasource, JSONDecodable{
     
-    let users: [User] = {
-        let me = User(name: "Mehmet Salih Koçak", username: "@msalihkocak", bioText: "Ödevini icra etmeye çalışan bir insan.", imageName: "profile_image")
-        let otherUser = User(name: "Brian Voong", username: "@letsbuildthatapp", bioText: "iPhone, iPad, iOS Programming Community. Join us to learn build iOS Apps.", imageName: "brian_pp")
-        return [me, otherUser]
-    }()
+    var users:[User]
+    var tweets:[Tweet]
+    
+    required init(json: JSON) throws {
+        users = [User]()
+        tweets = [Tweet]()
+        
+        self.users = json["users"].arrayValue.map({return User(json: $0)})
+        self.tweets = json["tweets"].arrayValue.map({return Tweet(json: $0)})
+    }
     
     override func cellClasses() -> [DatasourceCell.Type] {
-        return [UserCell.self]
+        return [UserCell.self, TweetCell.self]
     }
     
     override func headerClasses() -> [DatasourceCell.Type]? {
@@ -29,10 +36,14 @@ class HomeDatasource: Datasource{
     }
     
     override func item(_ indexPath: IndexPath) -> Any? {
-        return users[indexPath.item]
+        return indexPath.section == 0 ? users[indexPath.item] : tweets[indexPath.item]
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return users.count
+        return section == 0 ? users.count : tweets.count
+    }
+    
+    override func numberOfSections() -> Int {
+        return 2
     }
 }

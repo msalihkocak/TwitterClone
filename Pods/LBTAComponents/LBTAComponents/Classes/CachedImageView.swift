@@ -52,7 +52,7 @@ open class CachedImageView: UIImageView {
      - parameter completion: Optionally execute some task after the image download completes
      */
 
-    open func loadImage(urlString: String, completion: (() -> ())? = nil) {
+    public func loadImage(urlString: String, completion: (() -> ())? = nil) {
         image = nil
         
         self.urlStringForChecking = urlString
